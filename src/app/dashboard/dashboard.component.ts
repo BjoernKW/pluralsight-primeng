@@ -17,7 +17,7 @@ const DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
 })
 export class DashboardComponent implements AfterViewInit {
 
-  @ViewChild("mixedChart") mixedChart: UIChart;
+  @ViewChild("mixedChart", {static: false}) mixedChart: UIChart;
 
   hoursByProject = [
     { id: 1, name: 'Payroll App', hoursSpent: 8 },

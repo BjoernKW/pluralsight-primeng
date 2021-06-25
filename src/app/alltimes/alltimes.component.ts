@@ -12,7 +12,7 @@ const MAX_EXAMPLE_RECORDS = 1000;
 })
 export class AlltimesComponent implements OnInit {
 
-  @ViewChild("dt") dt : DataTable;
+  @ViewChild("dt", {static: false}) dt : DataTable;
 
   db: Dexie;
 
