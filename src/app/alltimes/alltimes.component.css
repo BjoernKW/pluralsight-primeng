@@ -22,24 +22,24 @@ h3 {
   display: inline;
 }
 
-p-dataTable >>> .ui-datatable-footer {
+p-dataTable ::ng-deep .ui-datatable-footer {
   min-height: 60px;
 }
 
-p-dataTable >>> .ui-datatable-footer input {
+p-dataTable ::ng-deep .ui-datatable-footer input {
   margin-left: 0.5em;
   font-size: larger;
   padding: 3px;
 }
 
-p-dataTable >>> .ui-datatable-footer {
+p-dataTable ::ng-deep .ui-datatable-footer {
   min-height: 60px;
 }
 
-p-dataTable >>> .selectBoxColumn {
+p-dataTable ::ng-deep .selectBoxColumn {
   width: 43px;
 }
 
-p-contextMenu >>> .ui-menuitem-active a {
+p-contextMenu ::ng-deep .ui-menuitem-active a {
   background-color: #F15B2A !important;
 }
