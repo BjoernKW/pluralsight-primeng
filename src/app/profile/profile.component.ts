@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Galleria, Message } from "primeng/primeng";
+import { Message } from "primeng/api";
 
 @Component({
   selector: 'at-profile',
