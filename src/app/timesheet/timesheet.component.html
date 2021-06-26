@@ -10,12 +10,23 @@
 <p-tabView class="u-g-12 tabs" (onChange)="onChangeTabs($event)">
   <p-tabPanel *ngFor="let tab of daysOfWeek" header="{{tab}}">
 
-    <p-dataTable [value]="getTimesForDay(tab)" class="timesheet-grid">
-      <p-column field="project" header="Project"></p-column>
-      <p-column field="category" header="Category"></p-column>
-      <p-column field="startTime" header="Start Time"></p-column>
-      <p-column field="endTime" header="End Time"></p-column>
-    </p-dataTable>
+    <p-table [value]="getTimesForDay(tab)" class="timesheet-grid">
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let column of columns"
+              scope="col">
+            {{column.header}}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template let-rowData pTemplate="body">
+        <tr>
+          <td *ngFor="let column of columns">
+            {{rowData[column.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
 
 
   </p-tabPanel>
@@ -34,11 +45,8 @@
 
     <div *ngSwitchCase="PageNames.TimePage">
 
-      <p-schedule [events]="events" [header]="headerConfig" styleClass="calendar" defaultView="agendaWeek"
-                  [editable]="true" [nowIndicator]="true"
-                  [allDaySlot]="false">
-
-      </p-schedule>
+      <p-calendar [(ngModel)]="selectedDate"
+                  appendTo="body"></p-calendar>
 
     </div>
     <div *ngSwitchCase="PageNames.ProjectPage">
@@ -55,13 +63,13 @@
     </div>
     <div *ngSwitchCase="PageNames.PeoplePage">
 
-      <p-dataGrid [value]="people" [paginator]="true" [rows]="4">
+      <p-dataView [value]="people" [paginator]="true" [rows]="4">
         <ng-template let-person pTemplate="item">
           <p-panel header="{{person.firstName}} {{person.lastName}}" class="ui-g-12 ui-md-3">
             <img [src]="person.avatar" [pTooltip]="person.email" tooltipPosition="bottom"/>
           </p-panel>
         </ng-template>
-      </p-dataGrid>
+      </p-dataView>
 
     </div>
   </div>
@@ -86,4 +94,4 @@
 
 </p-confirmDialog>
 
-<p-growl [value]="messages"></p-growl>
+<p-toast></p-toast>

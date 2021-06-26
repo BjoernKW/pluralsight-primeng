@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MenuModule, PanelModule, ChartModule, InputTextModule, ButtonModule, InputMaskModule, InputTextareaModule, EditorModule, CalendarModule, RadioButtonModule, FieldsetModule, DropdownModule, MultiSelectModule, ListboxModule, SpinnerModule, SliderModule, RatingModule, DataTableModule, ContextMenuModule, TabViewModule, DialogModule, StepsModule, ScheduleModule, TreeModule, GMapModule, DataGridModule, TooltipModule, ConfirmationService, ConfirmDialogModule, GrowlModule, DragDropModule, GalleriaModule } from 'primeng/primeng';
-
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -17,6 +15,37 @@ import { AlltimesComponent } from './alltimes/alltimes.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { MenuModule } from 'primeng/menu';
+import { PanelModule } from 'primeng/panel';
+import { ChartModule } from 'primeng/chart';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { EditorModule } from 'primeng/editor';
+import { CalendarModule } from 'primeng/calendar';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { FieldsetModule } from 'primeng/fieldset';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ListboxModule } from 'primeng/listbox';
+import { SpinnerModule } from 'primeng/spinner';
+import { SliderModule } from 'primeng/slider';
+import { RatingModule } from 'primeng/rating';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { TabViewModule } from 'primeng/tabview';
+import { DialogModule } from 'primeng/dialog';
+import { StepsModule } from 'primeng/steps';
+import { TreeModule } from 'primeng/tree';
+import { GMapModule } from 'primeng/gmap';
+import { DataViewModule } from 'primeng/dataview';
+import { TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DragDropModule } from 'primeng/dragdrop';
+import { ToastModule } from 'primeng/toast';
+import { GalleriaModule } from 'primeng/galleria';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 const appRoutes: Routes = [
@@ -65,22 +94,21 @@ const appRoutes: Routes = [
     SpinnerModule,
     SliderModule,
     RatingModule,
-    DataTableModule,
+    TableModule,
     ContextMenuModule,
     TabViewModule,
     DialogModule,
     StepsModule,
-    ScheduleModule,
     TreeModule,
     GMapModule,
-    DataGridModule,
+    DataViewModule,
     TooltipModule,
     ConfirmDialogModule,
-    GrowlModule,
+    ToastModule,
     DragDropModule,
     GalleriaModule
   ],
-  providers: [ ConfirmationService ],
+  providers: [ ConfirmationService, MessageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

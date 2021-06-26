@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuItem, DataTable, LazyLoadEvent } from "primeng/primeng";
+import { MenuItem, LazyLoadEvent } from "primeng/primeng";
 import { range } from 'rxjs';
 import Dexie from 'dexie';
+import { Table } from 'primeng/table';
 
 const MAX_EXAMPLE_RECORDS = 1000;
 
@@ -12,9 +13,18 @@ const MAX_EXAMPLE_RECORDS = 1000;
 })
 export class AlltimesComponent implements OnInit {
 
-  @ViewChild("dt", {static: false}) dt : DataTable;
+  @ViewChild("dt") dt : Table;
 
   db: Dexie;
+
+  columns = [
+    {header: 'User', field: 'user', type: 'string'},
+    {header: 'Project', field: 'project', type: 'string'},
+    {header: 'Category', field: 'category', type: 'string'},
+    {header: 'Start Time', field: 'startTime', type: 'time'},
+    {header: 'End Time', field: 'endTime', type: 'time'},
+    {header: 'Date', field: 'date', type: 'date'}
+  ];
 
   allTimesheetData = [
 
@@ -38,9 +48,6 @@ export class AlltimesComponent implements OnInit {
   recordCount : number;
 
   constructor() {
-    // for (let x = 0; x < 5; x++) {
-    //   this.allTimesheetData = this.allTimesheetData.concat(this.allTimesheetData);
-    // }
     this.recordCount = this.allTimesheetData.length;
 
     this.configureDatabase();

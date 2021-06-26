@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuItem, TreeNode, ConfirmationService, Message } from "primeng/primeng";
+import { MenuItem, TreeNode, ConfirmationService, Message } from "primeng/api";
 import { SampleProjectsData } from "app/timesheet/sample.projects.data";
 import { SamplePeopleData } from "app/timesheet/sample.people.data";
 
@@ -21,6 +21,13 @@ export enum PageNames {
   styleUrls: ['./timesheet.component.css']
 })
 export class TimesheetComponent {
+
+  columns = [
+    {header: 'Project', field: 'project', type: 'string'},
+    {header: 'Category', field: 'category', type: 'string'},
+    {header: 'Start Time', field: 'startTime', type: 'time'},
+    {header: 'End Time', field: 'endTime', type: 'time'}
+  ];
 
   private userTimeData = [
 
@@ -66,6 +73,7 @@ export class TimesheetComponent {
   projectsTree: TreeNode[] = SampleProjectsData.projects;
 
   selectedProject: TreeNode;
+  selectedDate = new Date();
 
   private mapOptions = {
 

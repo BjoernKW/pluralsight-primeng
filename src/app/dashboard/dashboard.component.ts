@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { UIChart } from "primeng/primeng";
+import { UIChart } from "primeng/chart";
 import {interval} from 'rxjs';
 
 
@@ -17,7 +17,7 @@ const DEFAULT_COLORS = ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099',
 })
 export class DashboardComponent implements AfterViewInit {
 
-  @ViewChild("mixedChart", {static: false}) mixedChart: UIChart;
+  @ViewChild("mixedChart") mixedChart: UIChart;
 
   hoursByProject = [
     { id: 1, name: 'Payroll App', hoursSpent: 8 },

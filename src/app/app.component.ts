@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
-import {MenuItem} from "primeng/primeng";
-import {Menu} from "primeng/components/menu/menu";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Menu } from "primeng/menu";
+import {Router} from "@angular/router";
+import { MenuItem } from 'primeng/api';
 
 declare var jQuery :any;
 
@@ -15,8 +15,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   menuItems: MenuItem[];
   miniMenuItems: MenuItem[];
 
-  @ViewChild('bigMenu', {static: false}) bigMenu : Menu;
-  @ViewChild('smallMenu', {static: false}) smallMenu : Menu;
+  @ViewChild('bigMenu') bigMenu : Menu;
+  @ViewChild('smallMenu') smallMenu : Menu;
 
   constructor(private router : Router) {
 

@@ -19,8 +19,15 @@
 
 <div class="spacer ui-g-12 ui-md-1"></div>
 
-<p-galleria #galleria [images]="images" class="ui-g-12 ui-md-7" panelWidth="300" panelHeight="298" [showCaption]="true" pDraggable="profilePic" dragHandle=".ui-panel-images" (onImageClicked)="onImageSelected($event)"
-(onDragStart)="onDragStart(galleria)">
+<p-galleria #galleria [value]="images" class="ui-g-12 ui-md-7" panelWidth="300" panelHeight="298"
+            pDraggable="profilePic" dragHandle=".ui-panel-images" (onDragStart)="onDragStart(galleria)">
+  <ng-template pTemplate="caption" let-item>
+    <h4 style="margin-bottom: .5rem; color: #ffffff;">{{item.title}}</h4>
+    <p>{{item.alt}}</p>
+  </ng-template>
+  <ng-template pTemplate="item" let-item>
+    <img (click)="onImageSelected($event)" [src]="item.source" [alt]="item.title" />
+  </ng-template>
 </p-galleria>
 
-<p-growl [value]="messages"></p-growl>
+<p-toast></p-toast>

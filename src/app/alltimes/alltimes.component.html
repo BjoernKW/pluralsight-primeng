@@ -12,36 +12,63 @@
 
   </div>
 
-
-  <p-dataTable #dt [value]="allTimesheetData" class="ui-g-12" sortField="startTime" sortOrder="1" emptyMessage="No time entries found"
-    [reorderableColumns]="true" columnResizeMode="fit" [resizableColumns]="true" [globalFilter]="tableSearch" exportFilename="users"
-    [editable]="true" (onEditComplete)="onEditComplete($event)" [(selection)]="selectedRows" (onRowSelect)="onRowSelect($event)"
+  <p-table #dt [value]="allTimesheetData" class="ui-g-12" sortField="startTime" sortOrder="1" emptyMessage="No time entries found"
+    [reorderableColumns]="true" columnResizeMode="fit" [resizableColumns]="true" exportFilename="users"
+    (onEditComplete)="onEditComplete($event)" [(selection)]="selectedRows" (onRowSelect)="onRowSelect($event)"
     [contextMenu]="tableContextMenu" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]" [totalRecords]="recordCount"
     [pageLinks]="8" [lazy]="true" (onLazyLoad)="loadTimes($event)">
-
-    <p-column selectionMode="multiple" styleClass="selectBoxColumn"></p-column>
-
-    <p-column field="user" header="User" [editable]="true"></p-column>
-    <p-column field="project" header="Project" [filter]="true" filterPlaceholder="Type a Project" filterMatchMode="equals" [style]="{'overflow':'visible'}"
-      [editable]="true">
-      <ng-template pTemplate="filter" let-col>
-        <p-dropdown [options]="allProjects" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)"
-          styleClass="ui-column-filter"></p-dropdown>
-      </ng-template>
-      <ng-template let-col let-project="rowData" pTemplate="editor">
-        <p-dropdown [(ngModel)]="project[col.field]" [options]="allProjects" [autoWidth]="false" [style]="{'width':'100%'}" required="true"></p-dropdown>
-      </ng-template>
-
-    </p-column>
-    <p-column field="category" header="Category" [sortable]="true"></p-column>
-    <p-column field="startTime" header="Start Time" [sortable]="true"></p-column>
-    <p-column field="endTime" header="End Time"></p-column>
-    <p-footer>
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="selectBoxColumn" scope="col">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th *ngFor="let column of columns"
+            [pSortableColumn]="column.field"
+            scope="col">
+          {{column.header}}
+          <p-sortIcon [field]="column.field"></p-sortIcon>
+        </th>
+      </tr>
+      <tr>
+        <th scope="col">&nbsp;</th>
+        <th *ngFor="let column of columns"
+            scope="col">
+          <ng-container *ngIf="column.field === 'project'">
+            <p-dropdown
+              (onChange)="dt.filter($event.value,column.field, 'equals')"
+              [options]="allProjects"
+              appendTo="body"
+              styleClass="p-column-filter"></p-dropdown>
+          </ng-container>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template let-rowData pTemplate="body">
+      <tr>
+        <td class="selectBoxColumn">
+          <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+        </td>
+        <ng-container *ngFor="let column of columns">
+          <td [ngSwitch]="column.type">
+            <ng-container *ngSwitchCase="'time'">
+              {{rowData[column.field] | date: 'HH:mm'}}
+            </ng-container>
+            <ng-container *ngSwitchCase="'date'">
+              {{rowData[column.field] | date}}
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              {{rowData[column.field]}}
+            </ng-container>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
       <label for="tableSearch">Search: </label>
       <input id="tableSearch" #tableSearch type="text" placeholder="Search All The Things">
       <button type="button" pButton icon="fa fa-table" label="Export" (click)="dt.exportCSV()" style="float:right;"></button>
-    </p-footer>
-  </p-dataTable>
+    </ng-template>
+  </p-table>
 
   <p-contextMenu #tableContextMenu [model]="contextMenu"></p-contextMenu>
 

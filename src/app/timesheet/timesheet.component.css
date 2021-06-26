@@ -34,11 +34,6 @@ h3 {
   margin: 1em;
 }
 
-p-schedule ::ng-deep .calendar {
-  height: 250px;
-}
-
-
 p-gmap ::ng-deep .gmap {
   width:100%;
   height: 300px;
@@ -48,33 +43,13 @@ p-steps ::ng-deep .ui-steps-item {
   width: 25%;
 }
 
-p-dataGrid ::ng-deep .ui-panel {
-  border: 0px;
+:host p-dataView ::ng-deep .p-panel-content {
+  padding: 0;
 }
 
-/**
-p-dataGrid ::ng-deep .ui-panel-titlebar {
-  font-size: smaller;
-  background-color: #F15B2A !important;
-  text-align: center;
-  height: 35px;
-}
-*/
-
-p-dataGrid ::ng-deep .ui-panel-content {
-  padding: 0px;
-}
-
-p-dataGrid ::ng-deep .ui-panel-content img {
+:host p-dataView ::ng-deep .p-panel-content img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 144px;
 }
-
-
-
-
-
-
-
