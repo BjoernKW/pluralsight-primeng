@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuItem, LazyLoadEvent } from "primeng/primeng";
+import { MenuItem, LazyLoadEvent } from "primeng/api";
 import { range } from 'rxjs';
 import Dexie from 'dexie';
 import { Table } from 'primeng/table';
