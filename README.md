@@ -27,6 +27,7 @@ Go for it!
  
 ## Errata & Updates
 
+- 2021-06-29 - Updated to Angular & PrimeNG 12 ([Björn Wilmsmann](https://github.com/BjoernKW)).
 - 2019-03-12 - Updated to PrimeNG 7. Rebuilt starter kit branch to match new build.
 - 2018-11-15 - Major Update! Updated to PrimeNG 6.1.6 and Angular 7.0 using [update.angular.io](https://update.angular.io)  
 - 2017-12-05 - Updated to PrimeNG 5.0.2 and Angular 5.0.5. And some layout fixes for new version.
@@ -36,3 +37,12 @@ Go for it!
 - 2017-08-24 - Course officially released [here](https://app.pluralsight.com/courses/angular-apps-prime-ng)
 - 2017-08-24 - Bumped Deps to latest version (PrimeNG 4.1.3, Angular 4.3.6)
 
+## Resources for Upgrading Angular & PrimeNG
+- [Angular Update Guide](https://update.angular.io/)
+  - [7.2 to 8.2](https://update.angular.io/?l=3&v=7.2-8.2)
+  - [8.2 to 9.1](https://update.angular.io/?l=3&v=8.2-9.1)
+  - [9.1 to 10.2](https://update.angular.io/?l=3&v=9.1-10.2)
+  - [10.2 to 11.0](https://update.angular.io/?l=3&v=10.2-11.0)
+  - [11.0 to 12.0](https://update.angular.io/?l=3&v=11.0-12.0)
+- [PrimeNG Migration Guide](https://github.com/primefaces/primeng/wiki/Migration-Guide)
+- [PrimeOne Migration](https://github.com/primefaces/primeng/wiki/PrimeOne-Migration)
